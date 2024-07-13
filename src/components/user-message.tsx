@@ -7,7 +7,7 @@ export const UserMessage: React.FC<UserMessageProps> = ({ message }) => {
   return (
     <div className="flex items-start gap-2 justify-end pl-12">
       <div className="grid gap-2 text-sm">
-        <div className="bg-primary rounded-lg p-4 text-primary-foreground font-semibold rounded-se-none shadow-sm border border-muted">
+        <div className="bg-secondary rounded-lg p-4 text-primary-foreground font-semibold rounded-se-none shadow-sm border border-muted">
           {message}
         </div>
       </div>

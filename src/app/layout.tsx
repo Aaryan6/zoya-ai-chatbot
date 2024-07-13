@@ -21,7 +21,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body
         className={cn("antialiased", fontHeading.variable, fontBody.variable)}
       >
-        <AI initialAIState={{ chatId: nanoid(), messages: [] }}>{children}</AI>
+        <AI initialAIState={{ chatId: nanoid(), messages: [] }}>
+          <main className="bg-muted">{children}</main>
+        </AI>
       </body>
     </html>
   );

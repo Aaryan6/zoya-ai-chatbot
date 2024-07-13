@@ -1,13 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useActions, useAIState, useUIState } from "ai/rsc";
 import { AI } from "./actions";
 import { nanoid } from "@/lib/utils";
 import { UserMessage } from "@/components/user-message";
 import { ChatMessage } from "@/components/chat-messages";
 import Navbar from "@/components/navbar";
+import { BotMessage, BotMessageStatic } from "@/components/bot-message";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -35,9 +36,22 @@ export default function Home() {
 
     setInputValue("");
   };
+
+  useEffect(() => {
+    setMessages((currentMessages) => [
+      {
+        id: nanoid(),
+        display: (
+          <BotMessageStatic
+            message={"Main hun aapki Zoya, poochiye mujhe kuch bhi!"}
+          />
+        ),
+      },
+    ]);
+  }, []);
   return (
     <div className="sm:py-4 px-0">
-      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-xl mx-auto sm:rounded-2xl border overflow-hidden">
+      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-xl mx-auto sm:rounded-2xl border border-muted overflow-hidden shadow-md">
         <Navbar />
         <div className="overflow-y-auto">
           <div className="grid gap-4 p-2">

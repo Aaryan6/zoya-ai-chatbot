@@ -37,7 +37,7 @@ export default function Home() {
   };
   return (
     <div className="sm:py-4 px-0">
-      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-xl mx-auto sm:rounded-lg border overflow-hidden">
+      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-xl mx-auto sm:rounded-2xl border overflow-hidden">
         <Navbar />
         <div className="overflow-y-auto">
           <div className="grid gap-4 p-2">
@@ -50,7 +50,7 @@ export default function Home() {
               <Input
                 type="text"
                 placeholder="Type your message..."
-                className="flex-1 bg-muted focus-visible:ring-offset-0 focus-visible:ring-transparent"
+                className="flex-1 bg-muted focus-visible:ring-offset-0 focus-visible:ring-transparent font-semibold"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
               />

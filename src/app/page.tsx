@@ -36,28 +36,30 @@ export default function Home() {
     setInputValue("");
   };
   return (
-    <div className="h-screen bg-muted">
-      <Navbar />
-      <div className="overflow-y-auto">
-        <div className="grid gap-4 p-2">
-          <ChatMessage messages={messages} aiState={aiState} />
+    <div className="sm:py-4 px-0">
+      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-xl mx-auto sm:rounded-lg border overflow-hidden">
+        <Navbar />
+        <div className="overflow-y-auto">
+          <div className="grid gap-4 p-2">
+            <ChatMessage messages={messages} aiState={aiState} />
+          </div>
         </div>
-      </div>
-      <div className="max-w-3xl w-full mx-auto fixed bottom-5 md:bottom-10 inset-x-0 px-2">
-        <div className="border bg-card p-4 rounded-lg">
-          <form onSubmit={onSubmit} className="flex items-center gap-4">
-            <Input
-              type="text"
-              placeholder="Type your message..."
-              className="flex-1 bg-muted focus-visible:ring-offset-0 focus-visible:ring-transparent"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <Button type="submit">
-              <SendIcon className="w-5 h-5" />
-              <span className="sr-only">Send</span>
-            </Button>
-          </form>
+        <div className="max-w-xl w-full mx-auto fixed bottom-3 sm:bottom-6 inset-x-0 px-2">
+          <div className="border bg-card p-4 rounded-lg">
+            <form onSubmit={onSubmit} className="flex items-center gap-4">
+              <Input
+                type="text"
+                placeholder="Type your message..."
+                className="flex-1 bg-muted focus-visible:ring-offset-0 focus-visible:ring-transparent"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <Button type="submit">
+                <SendIcon className="w-5 h-5" />
+                <span className="sr-only">Send</span>
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

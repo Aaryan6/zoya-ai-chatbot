@@ -3,14 +3,18 @@
 import { LinkedinIcon, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Zoya from "../../public/zoya.png";
+import Zoya from "../../public/zoya.jpeg";
 
 export default function Navbar() {
   return (
     <header className="flex items-center justify-between border-b bg-card">
-      <div className="flex items-center justify-between gap-4 w-full max-w-7xl mx-auto px-6 py-4">
+      <div className="flex items-center justify-between gap-4 w-full max-w-7xl mx-auto px-6 py-2">
         <div className="flex items-center gap-2">
-          <Image src={Zoya} alt="zoya" width={25} height={25} className="" />
+          <Image
+            src={Zoya}
+            alt="zoya"
+            className="w-12 h-12 rounded-full object-cover"
+          />
           <span className="text-xl font-bold">Zoya</span>
         </div>
         <div className="flex items-center gap-x-6">

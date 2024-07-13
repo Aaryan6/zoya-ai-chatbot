@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { AIState, UIState } from "@/app/actions";
 import { useEffect, useRef } from "react";
+import { ScrollArea } from "./ui/scroll-area";
 
 export interface ChatMessageProps {
   messages: UIState;
@@ -15,19 +16,22 @@ export function ChatMessage({ messages, aiState }: ChatMessageProps) {
   }, [messages, aiState?.messages]);
 
   return (
-    <div
+    <ScrollArea
       className={cn(
         "mb-4 flex-1 h-[calc(100vh-10rem)] flex flex-col gap-4 overflow-y-auto"
       )}
     >
       {messages.map((message, index: number) => {
         return (
-          <div key={message.id ?? index} className="max-w-3xl w-full mx-auto">
+          <div
+            key={message.id ?? index}
+            className="max-w-3xl w-full mx-auto py-2"
+          >
             <div className="">{message.display}</div>
           </div>
         );
       })}
-      <div ref={bottomScrollRef} className="pb-8 md:pb-16" />
-    </div>
+      <div ref={bottomScrollRef} className="pb-8" />
+    </ScrollArea>
   );
 }

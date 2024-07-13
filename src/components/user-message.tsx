@@ -5,9 +5,9 @@ type UserMessageProps = {
 };
 export const UserMessage: React.FC<UserMessageProps> = ({ message }) => {
   return (
-    <div className="flex items-start gap-4 justify-end">
+    <div className="flex items-start gap-2 justify-end">
       <div className="grid gap-2 text-sm">
-        <div className="bg-primary rounded-lg p-4 text-primary-foreground font-medium">
+        <div className="bg-primary rounded-lg p-4 text-primary-foreground font-medium rounded-se-none">
           {message}
         </div>
       </div>

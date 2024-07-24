@@ -20,9 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body
         className={cn("antialiased", fontHeading.variable, fontBody.variable)}
       >
-        <main className="bg-gradient-to-br from-slate-700 to-slate-900">
-          {children}
-        </main>
+        <main className="bg">{children}</main>
       </body>
     </html>
   );

@@ -23,6 +23,8 @@ export default function Home() {
       { role: "user", content: input },
     ]);
 
+    setInput("");
+
     let textContent = "";
 
     for await (const delta of readStreamableValue(newMessage)) {
@@ -33,7 +35,6 @@ export default function Home() {
         { role: "assistant", content: textContent },
       ]);
     }
-    setInput("");
   };
   return (
     <div className="sm:py-4 px-0">

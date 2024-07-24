@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 import { ScrollArea } from "./ui/scroll-area";
-import { Message } from "ai";
 import { BotMessage } from "./bot-message";
 import { UserMessage } from "./user-message";
+import { Message } from "@/app/actions";
 
 export interface ChatMessageProps {
   messages: Message[];
@@ -25,10 +25,7 @@ export function ChatMessage({ messages }: ChatMessageProps) {
       <BotMessage message="Main hun aapki Zoya, poochiye mujhe kuch bhi!" />
       {messages.map((message, index: number) => {
         return (
-          <div
-            key={message.id ?? index}
-            className="max-w-3xl w-full mx-auto py-2"
-          >
+          <div key={index} className="max-w-3xl w-full mx-auto py-2">
             {message.role === "assistant" ? (
               <BotMessage message={message.content} />
             ) : (

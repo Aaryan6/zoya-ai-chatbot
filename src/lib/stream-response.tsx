@@ -15,7 +15,7 @@ const google = createGoogleGenerativeAI({
 export async function GetAnswer({ uiStream, messages }: Props) {
   const stream = createStreamableValue<any>();
 
-  uiStream.append(<BotMessage message={stream.value} />);
+  // uiStream.append(<BotMessage message={stream.value} />);
 
   let finalInquiry: string = "";
   await streamText({

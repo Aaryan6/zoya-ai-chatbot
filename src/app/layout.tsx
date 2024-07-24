@@ -1,7 +1,6 @@
 import { Manrope } from "next/font/google";
-import { cn, nanoid } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import "./globals.css";
-import { AI } from "./actions";
 
 const fontHeading = Manrope({
   subsets: ["latin"],
@@ -21,9 +20,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body
         className={cn("antialiased", fontHeading.variable, fontBody.variable)}
       >
-        <AI initialAIState={{ chatId: nanoid(), messages: [] }}>
-          <main className="bg-muted">{children}</main>
-        </AI>
+        <main className="bg-gradient-to-br from-slate-700 to-slate-900">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -1,72 +1,33 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
-import { useActions, useAIState, useUIState } from "ai/rsc";
-import { AI } from "./actions";
-import { nanoid } from "@/lib/utils";
-import { UserMessage } from "@/components/user-message";
 import { ChatMessage } from "@/components/chat-messages";
 import Navbar from "@/components/navbar";
-import { BotMessage, BotMessageStatic } from "@/components/bot-message";
+import { useChat } from "ai/react";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
 export default function Home() {
-  const [messages, setMessages] = useUIState<typeof AI>();
-  const { submit } = useActions();
-  const [inputValue, setInputValue] = useState("");
-  const [aiState] = useAIState<typeof AI>();
-
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    setMessages((currentMessages) => [
-      ...currentMessages,
-      {
-        id: nanoid(),
-        display: <UserMessage message={inputValue} />,
-      },
-    ]);
-
-    const res = await submit(inputValue);
-
-    setMessages((currentMessages) => [...currentMessages, res as any]);
-
-    setInputValue("");
-  };
-
-  useEffect(() => {
-    setMessages((currentMessages) => [
-      {
-        id: nanoid(),
-        display: (
-          <BotMessageStatic
-            message={"Main hun aapki Zoya, poochiye mujhe kuch bhi!"}
-          />
-        ),
-      },
-    ]);
-  }, []);
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
   return (
     <div className="sm:py-4 px-0">
-      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-xl mx-auto sm:rounded-2xl border border-muted overflow-hidden shadow-md">
+      <div className="h-screen sm:h-[calc(100vh-2rem)] bg-muted sm:max-w-lg mx-auto sm:rounded-2xl border border-muted overflow-hidden shadow-md">
         <Navbar />
         <div className="overflow-y-auto">
           <div className="grid gap-4 p-2">
-            <ChatMessage messages={messages} aiState={aiState} />
+            <ChatMessage messages={messages} />
           </div>
         </div>
-        <div className="max-w-xl w-full mx-auto fixed bottom-3 sm:bottom-6 inset-x-0 px-2">
+        <div className="max-w-lg w-full mx-auto fixed bottom-3 sm:bottom-6 inset-x-0 px-2">
           <div className="border bg-card p-4 rounded-lg">
-            <form onSubmit={onSubmit} className="flex items-center gap-4">
+            <form onSubmit={handleSubmit} className="flex items-center gap-4">
               <Input
                 type="text"
                 placeholder="Type your message..."
                 className="flex-1 bg-muted focus-visible:ring-offset-0 focus-visible:ring-transparent font-semibold"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                value={input}
+                onChange={handleInputChange}
               />
               <Button type="submit">
                 <SendIcon className="w-5 h-5" />
